@@ -1,0 +1,33 @@
+[PSO]
+random_radius = 5
+population_number = 5
+iter_number = 30
+padding_step = 2
+
+[DATAEXTRACT]
+data_origin_path = 'data/origin'
+data_square_path = 'data/square'
+data_circle_path = 'data/circle'
+data_split_train_path = 'data/train'
+data_split_valid_path = 'data/valid'
+data_split_origin_path = 'data/square'
+#  train_ration可以小很多，因为会动态构造数据
+train_ratio = 0.9
+clear_origin = false
+
+[MODEL]
+#  resnet18, resnet34, resnet50, resnet101, resnet152
+model_type = 'resnet18'
+
+[TRAIN]
+save_weights = "runs"
+train_path = 'data/train'
+valid_path = 'data/valid'
+device = 'cuda:0'
+batch_size = 16
+works = 1
+shuffle = true
+lr = 0.001
+epochs = 100
+log_interval = 10
+val_interval = 10
