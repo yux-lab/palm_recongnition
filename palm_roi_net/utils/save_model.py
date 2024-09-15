@@ -15,7 +15,7 @@ def create_run(idx,dis):
     else:
         return create_run(idx+1,dis)
 
-def save_model(exp_path,weight_best,weight_last):
+def save_model(exp_path,weight_best,weight_last,index=0):
 
     if(os.path.exists(exp_path)):
 
@@ -23,8 +23,8 @@ def save_model(exp_path,weight_best,weight_last):
         if(not os.path.exists(save_path_root)):
             os.makedirs(save_path_root)
 
-        save_path_best = os.path.join(save_path_root,"best.pth")
-        save_path_last = os.path.join(save_path_root,"last.pth")
+        save_path_best = os.path.join(save_path_root,f"best_{index}.pth")
+        save_path_last = os.path.join(save_path_root,f"last_{index}.pth")
         torch.save(weight_best,save_path_best)
         torch.save(weight_last,save_path_last)
         mylogger.warning(f"the best model path{save_path_best}")

@@ -11,13 +11,17 @@ data_circle_path = 'data/circle'
 data_split_train_path = 'data/train'
 data_split_valid_path = 'data/valid'
 data_split_origin_path = 'data/square'
-#  train_ration可以小很多，因为会动态构造数据
-train_ratio = 0.9
+#  train_ration可以小很多，如果是静态构建的数据集训练的话
+train_ratio = 0.8
 clear_origin = false
+# 224 224 before
+img_size = [128, 128]
 
 [MODEL]
 #  resnet18, resnet34, resnet50, resnet101, resnet152
-model_type = 'resnet18'
+model_type = 'resnet50'
+feature_dim = 128
+pretrained = true
 
 [TRAIN]
 save_weights = "runs"
@@ -25,9 +29,20 @@ train_path = 'data/train'
 valid_path = 'data/valid'
 device = 'cuda:0'
 batch_size = 16
+back_true = 0.5
 works = 1
+# 支持的损失函数：CosineSimilarityLoss，ClassFiyOneLoss，
+#ClassFiyTwoLoss，CosineMarginOneLoss，CosineMarginTwoLoss,PalmCombinedLoss
+# PalmCombinedLoss 是当前项目默认的损失函数，也是当前测试效果最好的损失函数
+loss = 'PalmCombinedLoss'
+similarity_threshold = 0.85
+loss_margin = 0.2
 shuffle = true
 lr = 0.001
-epochs = 100
-log_interval = 10
+epochs = 1000
 val_interval = 10
+log_interval = 200
+save_epoch = 10
+
+[DETECT]
+device = 'cuda:0'

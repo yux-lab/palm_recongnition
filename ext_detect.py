@@ -12,7 +12,7 @@ from palm_roi_net.models.restnet_ext import PalmPrintFeatureExtractor
 from palm_roi_net.palm_dataset import data_transforms
 
 if torch.cuda.is_available():
-    device = torch.device(config_toml['train']['device'])
+    device = torch.device(config_toml['DETECT']['device'])
     torch.backends.cudnn.benchmark = True
     mylogger.warning(f"Device：{torch.cuda.get_device_name()}")
 
@@ -47,11 +47,12 @@ class ExtCosInstance():
             # 计算余弦相似度
             cosine_similarity = torch.nn.CosineSimilarity(dim=1, eps=1e-6)
             similarity = cosine_similarity(feature0, feature1).item()
-
             # 将相似度限制在0-1之间
-            return feature0,feature1,(similarity + 1) / 2
+            return feature0,feature1,(similarity+1)/2
 
 
 if __name__ == '__main__':
-    ext = ExtCosInstance("/test.pt")
-    print(ext.get_feature_similarity('data/1.png', 'data/2.png'))
+    ext = ExtCosInstance(r"F:\projects\Gibs\palmprint_recognition\last_90.pth")
+    img0 = r"F:\projects\Gibs\palmprint_recognition\data\square\001_1_h_l_01.bmp"
+    img1 = r"F:\projects\Gibs\palmprint_recognition\data\square\001_1_h_l_02.bmp"
+    print(ext.get_feature_similarity(img0, img1))

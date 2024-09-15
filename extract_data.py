@@ -36,12 +36,15 @@ def ex_tract_data():
     for index, img_dir_path in enumerate(tqdm(img_dir_paths, desc="Processing directories")):
         img_dir_path_abs = os.path.join(data_save_path,img_dir_path)
         if img_dir_path.endswith(".jpg") or img_dir_path.endswith(".png") or img_dir_path.endswith(".bmp"):
-            img = cv2.imread(img_dir_path_abs)
-            draw_img,roi_square,roi_circle = roi_extract.roi_extract(img)
-            # 将提取到图像转存为bmp格式
-            file_name = os.path.basename(img_dir_path_abs).split(".")[0]
-            cv2.imwrite(os.path.join(data_square_path,f"{file_name}.bmp"), roi_square)
-            cv2.imwrite(os.path.join(data_circle_path,f"{file_name}.bmp"), roi_circle)
+            try:
+                img = cv2.imread(img_dir_path_abs)
+                draw_img,roi_square,roi_circle = roi_extract.roi_extract(img)
+                # 将提取到图像转存为bmp格式
+                file_name = os.path.basename(img_dir_path_abs).split(".")[0]
+                cv2.imwrite(os.path.join(data_square_path,f"{file_name}.bmp"), roi_square)
+                cv2.imwrite(os.path.join(data_circle_path,f"{file_name}.bmp"), roi_circle)
+            except Exception as e:
+                mylogger.error(f"Error processing file {img_dir_path_abs}: {e}")
     end = time.time()
     mylogger.info(f"Time elapsed: {(end - start):.2f} seconds")
 
@@ -85,6 +88,6 @@ def split_dataset():
             os.remove(os.path.join(origin_path, file))
 
 if __name__ == '__main__':
-    # ex_tract_data()
+    ex_tract_data()
     split_dataset()
 
