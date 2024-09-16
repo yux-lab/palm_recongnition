@@ -19,7 +19,7 @@ img_size = [128, 128]
 
 [MODEL]
 #  resnet18, resnet34, resnet50, resnet101, resnet152
-model_type = 'resnet50'
+model_type = 'resnet18'
 feature_dim = 128
 pretrained = true
 
@@ -32,14 +32,13 @@ batch_size = 16
 back_true = 0.5
 works = 1
 # 支持的损失函数：CosineSimilarityLoss，ClassFiyOneLoss，
-#ClassFiyTwoLoss，CosineMarginOneLoss，CosineMarginTwoLoss,PalmCombinedLoss
-# PalmCombinedLoss 是当前项目默认的损失函数，也是当前测试效果最好的损失函数
+#ClassFiyTwoLoss，CosineMarginOneLoss，CosineMarginTwoLoss,PalmCombinedLoss(当前项目默认的损失函数)
 loss = 'PalmCombinedLoss'
-similarity_threshold = 0.85
-loss_margin = 0.2
+similarity_threshold = 0.75
+loss_margin = 0.0
 shuffle = true
 lr = 0.001
-epochs = 1000
+epochs = 200
 val_interval = 10
 log_interval = 200
 save_epoch = 10

@@ -92,6 +92,7 @@ docs/_build/
 # PyBuilder
 target/
 
+runs/train_vec/*/weights
 
 # .env files
 .env

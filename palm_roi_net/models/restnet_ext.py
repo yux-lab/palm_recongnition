@@ -6,7 +6,7 @@
 import torch
 import torch.nn as nn
 import torchvision.models as models
-
+import torch.nn.functional as F
 from base import config_toml, mylogger
 
 
@@ -43,4 +43,6 @@ class PalmPrintFeatureExtractor(nn.Module):
 
     def forward(self, x):
         x = self.resnet(x)
+        # 对输出的特征向量进行L2归一化
+        x = F.normalize(x, p=2, dim=-1)
         return x

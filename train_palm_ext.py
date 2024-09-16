@@ -153,9 +153,9 @@ def train():
         # tensorboard 绘图
         # 总体损失值是上曲线
         # 每轮损失值是下曲线
-        writer.add_scalar("总体损失值", total_loss, epoch)
-        writer.add_scalar("每轮损失值", train_loss, epoch)
-        writer.add_scalar("准确率", acc_epoch, epoch)
+        writer.add_scalar("训练总体损失值", total_loss, epoch)
+        writer.add_scalar("训练每轮损失值", train_loss, epoch)
+        writer.add_scalar("训练准确率", acc_epoch, epoch)
         writer.add_scalar("训练TAR", tar_epoch, epoch)
         writer.add_scalar("训练FAR", far_epoch, epoch)
         writer.add_scalar("训练FRR", frr_epoch, epoch)
@@ -219,8 +219,8 @@ def train():
                 print(info_val, file=fo)
                 val_loss_total += val_loss
 
-                writer.add_scalar("测试总体损失", val_loss_total, v_time)
-                writer.add_scalar("每次测试总损失总值", val_loss, v_time)
+                writer.add_scalar("测试总体损失值", val_loss_total, v_time)
+                writer.add_scalar("测试每轮损失值", val_loss, v_time)
                 writer.add_scalar("测试准确率", val_acc_time, v_time)
                 writer.add_scalar("测试TAR", val_tar_time, v_time)
                 writer.add_scalar("测试FAR", val_far_time, v_time)
@@ -235,9 +235,9 @@ def train():
     # 最后一次的权重
     last_weight = net.state_dict()
     # 保存模型
-    save_model.save_model(exp_path, best_weight, last_weight)
+    save_model.save_model(exp_path, best_weight, last_weight,index=config_toml['TRAIN']['epochs'])
     fo.close()
-    mylogger.info("tensorboard dir is:{path_board}")
+    mylogger.info(f"tensorboard dir is:{path_board}")
     writer.close()
 
 
