@@ -161,7 +161,7 @@ std=[0.229, 0.224, 0.225]
 ### Val Different Loss Function🙂
 
 为节省时间与计算资源，当前验证基于resnet18，迭代训练200轮。
-样本综述1.6W，提取类别400W，4：1 划分训练与测试集
+样本总数1.6W，提取类别400W，4：1 划分训练与测试集
 
 PS: ClassFiyOneLoss 与 CosineMarginOneLoss 任务与分类任务类似，因此其Acc的评估采用分类评估（其未使用到正负样本，无法使用该方式计算）
 ```python
