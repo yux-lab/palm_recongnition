@@ -124,16 +124,16 @@ std=[0.229, 0.224, 0.225]
 ```
 具体可以看到下列处理后的图像：
 <div style="display: flex; flex-direction: row; flex-wrap: wrap;gap: 10px">
-   <div style="display: inline">
-      <p style="font-size: 15px; text-align: center">原ROI图像</p>
+   <div style="display: inline;font-size: 15px; text-align: center">
+      <h6>原ROI图像</h6>
       <img alt="原ROI图像" src="docs/img_7.png" style="width: 200px" >
    </div>
-   <div style="display: inline">
-      <p style="font-size: 15px; text-align: center">imgNet设置</p>
+   <div style="display: inline;font-size: 15px; text-align: center">
+      <h6>imgNet设置imgNet设置</h6>
       <img alt="imgNet设置" src="docs/img_6.png" style="width: 200px" >
    </div>
-   <div style="display: inline">
-      <p style="font-size: 15px; text-align: center">Current or's 设置</p>
+   <div style="display: inline;font-size: 15px; text-align: center">
+      <h6> Current or's 设置</h6>
       <img alt="Current or's 设置" src="docs/img_8.png" style="width: 200px" >
    </div>
 
@@ -155,7 +155,7 @@ std=[0.229, 0.224, 0.225]
 其中，关于FAR,TAR等计算见 `class LossEval`
 
 <div style="display: flex; flex-direction: row; flex-wrap: wrap;justify-content: center">
-   <img src="docs/img_11.png" style="width: 800px" >
+   <img src="docs/img_25.png" style="width: 600px;" >
 </div>
 
 ### Val Different Loss Function🙂
@@ -204,20 +204,20 @@ PS： 由于不同损失函数，计算方式不同，取值区间范围也不�
 
 <div style="display: flex; flex-direction: row; flex-wrap: wrap;gap: 10px">
    <div>
-      <p style="font-size: 15px; text-align: center">训练损失</p>
-      <img alt="训练损失" src="docs/img_12.png" style="width: 400px" >
+      <h6>训练损失</h6>
+      <img alt="训练损失" src="docs/img_12.png" style="width: 400px;height: 180px" >
    </div>
    <div>
-      <p style="font-size: 15px; text-align: center">训练准确率</p>
-      <img alt="训练准确率" src="docs/img_13.png" style="width: 400px" >
+      <h6>训练准确率</h6>
+      <img alt="训练准确率" src="docs/img_13.png" style="width: 400px;height: 180px" >
    </div>
    <div>
-      <p style="font-size: 15px; text-align: center">测试损失</p>
-      <img alt="Current or's 设置" src="docs/img_15.png" style="width: 400px" >
+      <h6>测试损失</h6>
+      <img alt="Current or's 设置" src="docs/img_15.png" style="width: 400px;height: 180px" >
    </div>
-   <div>
-      <p style="font-size: 15px; text-align: center">测试准确率</p>
-      <img alt="训练准确率" src="docs/img_14.png" style="width: 400px" >
+   <div >
+      <h6>测试准确率</h6>
+      <img alt="训练准确率" src="docs/img_14.png" style="width: 400px;height: 180px" >
    </div>
 
 </div>
@@ -227,20 +227,20 @@ PS： 由于不同损失函数，计算方式不同，取值区间范围也不�
 
 <div style="display: flex; flex-direction: row; flex-wrap: wrap;gap: 10px">
    <div>
-      <p style="font-size: 15px; text-align: center">训练损失</p>
-      <img alt="训练损失" src="docs/img_16.png" style="width: 400px" >
+      <h6>训练损失</h6>
+      <img alt="训练损失" src="docs/img_16.png" style="width: 400px;height: 180px" >
    </div>
    <div>
-      <p style="font-size: 15px; text-align: center">训练准确率</p>
-      <img alt="训练准确率" src="docs/img_17.png" style="width: 400px" >
+      <h6>训练准确率</h6>
+      <img alt="训练准确率" src="docs/img_17.png" style="width: 400px;height: 180px" >
    </div>
    <div>
-      <p style="font-size: 15px; text-align: center">测试损失</p>
-      <img alt="Current or's 设置" src="docs/img_18.png" style="width: 400px" >
+      <h6>测试损失</h6>
+      <img alt="Current or's 设置" src="docs/img_18.png" style="width: 400px;height: 180px" >
    </div>
-   <div>
-      <p style="font-size: 15px; text-align: center">测试准确率</p>
-      <img alt="训练准确率" src="docs/img_19.png" style="width: 400px" >
+   <div >
+      <h6>测试准确率</h6>
+      <img alt="训练准确率" src="docs/img_19.png" style="width: 400px;height: 180px" >
    </div>
 
 </div>
@@ -250,23 +250,24 @@ PS： 由于不同损失函数，计算方式不同，取值区间范围也不�
 
 <div style="display: flex; flex-direction: row; flex-wrap: wrap;gap: 10px">
    <div>
-      <p style="font-size: 15px; text-align: center">训练损失</p>
-      <img alt="训练损失" src="docs/img_20.png" style="width: 400px" >
+      <h6>训练损失</h6>
+      <img alt="训练损失" src="docs/img_20.png" style="width: 400px;height: 180px" >
    </div>
    <div>
-      <p style="font-size: 15px; text-align: center">训练准确率</p>
-      <img alt="训练准确率" src="docs/img_21.png" style="width: 400px" >
+      <h6>训练准确率</h6>
+      <img alt="训练准确率" src="docs/img_21.png" style="width: 400px;height: 180px" >
    </div>
    <div>
-      <p style="font-size: 15px; text-align: center">测试损失</p>
-      <img alt="Current or's 设置" src="docs/img_22.png" style="width: 400px" >
+      <h6>测试损失</h6>
+      <img alt="Current or's 设置" src="docs/img_22.png" style="width: 400px;height: 180px" >
    </div>
-   <div>
-      <p style="font-size: 15px; text-align: center">测试准确率</p>
-      <img alt="训练准确率" src="docs/img_23.png" style="width: 400px" >
+   <div >
+      <h6>测试准确率</h6>
+      <img alt="训练准确率" src="docs/img_23.png" style="width: 400px;height: 180px" >
    </div>
 
 </div>
+
 
 更多评价指标，可通过tensorboard查看。
 
