@@ -124,15 +124,15 @@ std=[0.229, 0.224, 0.225]
 ```
 具体可以看到下列处理后的图像：
 <div style="display: flex; flex-direction: row; flex-wrap: wrap;gap: 10px">
-   <div>
+   <div style="display: inline">
       <p style="font-size: 15px; text-align: center">原ROI图像</p>
       <img alt="原ROI图像" src="docs/img_7.png" style="width: 200px" >
    </div>
-   <div>
+   <div style="display: inline">
       <p style="font-size: 15px; text-align: center">imgNet设置</p>
       <img alt="imgNet设置" src="docs/img_6.png" style="width: 200px" >
    </div>
-   <div>
+   <div style="display: inline">
       <p style="font-size: 15px; text-align: center">Current or's 设置</p>
       <img alt="Current or's 设置" src="docs/img_8.png" style="width: 200px" >
    </div>
