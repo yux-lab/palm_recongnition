@@ -52,7 +52,7 @@ class ExtCosInstance():
 
 
 if __name__ == '__main__':
-    ext = ExtCosInstance(r"F:\projects\Gibs\palmprint_recognition\runs\train_vec\epx5\weights\last_200.pth")
-    img0 = r"F:\projects\Gibs\palmprint_recognition\data\square\001_1_h_l_02.bmp"
-    img1 = r"F:\projects\Gibs\palmprint_recognition\data\square\001_1_h_l_06.bmp"
+    ext = ExtCosInstance(r"F:\projects\Gibs\palmprint_recognition\runs\train_vec\epx6\weights\last_200.pth")
+    img0 = r"F:\projects\Gibs\palmprint_recognition\data\square\002_1_h_l_02.bmp"
+    img1 = r"F:\projects\Gibs\palmprint_recognition\data\square\002_1_h_l_01.bmp"
     print(ext.get_feature_similarity(img0, img1))

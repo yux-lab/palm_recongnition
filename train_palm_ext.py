@@ -244,4 +244,4 @@ def train():
 if __name__ == '__main__':
     train()
     # nohup python3.10 train_palm_ext.py  >> log.txt 2>&1 &
-    # tensorboard --logdir=runs/train_vec/epx0/logs --port=6006 --host=0.0.0.0
+    # tensorboard --logdir=runs/train_vec/ --port=6006 --host=0.0.0.0
