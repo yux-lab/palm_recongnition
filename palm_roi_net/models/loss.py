@@ -38,17 +38,12 @@ class LossEval(object):
         true_negatives = torch.where((predictions == -1) & (label == -1), torch.tensor(1, device=predictions.device),
                                      torch.tensor(0, device=predictions.device)).sum().float()
 
-        # 计算正样本和负样本的总数
-        positive_samples = torch.where(label == 1, torch.tensor(1, device=label.device),
-                                       torch.tensor(0, device=label.device)).sum().float()
-        negative_samples = torch.where(label == -1, torch.tensor(1, device=label.device),
-                                       torch.tensor(0, device=label.device)).sum().float()
 
         # 计算 TAR, FAR, FRR, TRR
-        true_accept_rate = true_positives / positive_samples
-        false_accept_rate = false_positives / negative_samples
-        false_reject_rate = false_negatives / positive_samples
-        true_reject_rate = true_negatives / negative_samples
+        true_accept_rate = true_positives / (true_positives + false_negatives)
+        false_accept_rate = false_positives / (false_positives + true_negatives)
+        false_reject_rate = false_negatives / (true_positives + false_negatives)
+        true_reject_rate = true_negatives / (false_positives + true_negatives)
 
         # 将标签转换为 0 和 1
         label_binary = torch.where(label == 1, torch.tensor(1, device=label.device),
