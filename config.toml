@@ -19,7 +19,7 @@ img_size = [128, 128]
 
 [MODEL]
 #  resnet18, resnet34, resnet50, resnet101, resnet152
-model_type = 'resnet50'
+model_type = 'resnet18'
 feature_dim = 128
 pretrained = true
 
