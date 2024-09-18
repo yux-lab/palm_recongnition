@@ -29,23 +29,26 @@ class LossEval(object):
         correct_predictions = (predictions == label).float()
         accuracy = torch.mean(correct_predictions)
 
-        # 计算 TAR 和 FAR
-        true_accepts = torch.where((predictions == 1) & (label == 1), torch.tensor(1, device=similarity_scores.device),
-                                   torch.tensor(0, device=similarity_scores.device))
-        false_accepts = torch.where((predictions == 1) & (label == -1),
-                                    torch.tensor(1, device=similarity_scores.device),
-                                    torch.tensor(0, device=similarity_scores.device))
-        false_rejects = torch.where((predictions == -1) & (label == 1),
-                                    torch.tensor(1, device=similarity_scores.device),
-                                    torch.tensor(0, device=similarity_scores.device))
-        true_rejects = torch.where((predictions == -1) & (label == -1),
-                                   torch.tensor(1, device=similarity_scores.device),
-                                   torch.tensor(0, device=similarity_scores.device))
+        true_positives = torch.where((predictions == 1) & (label == 1), torch.tensor(1, device=predictions.device),
+                                     torch.tensor(0, device=predictions.device)).sum().float()
+        false_positives = torch.where((predictions == 1) & (label == -1), torch.tensor(1, device=predictions.device),
+                                      torch.tensor(0, device=predictions.device)).sum().float()
+        false_negatives = torch.where((predictions == -1) & (label == 1), torch.tensor(1, device=predictions.device),
+                                      torch.tensor(0, device=predictions.device)).sum().float()
+        true_negatives = torch.where((predictions == -1) & (label == -1), torch.tensor(1, device=predictions.device),
+                                     torch.tensor(0, device=predictions.device)).sum().float()
 
-        true_accept_rate = torch.mean(true_accepts.float())
-        false_accept_rate = torch.mean(false_accepts.float())
-        false_reject_rate = torch.mean(false_rejects.float())
-        true_reject_rate = torch.mean(true_rejects.float())
+        # 计算正样本和负样本的总数
+        positive_samples = torch.where(label == 1, torch.tensor(1, device=label.device),
+                                       torch.tensor(0, device=label.device)).sum().float()
+        negative_samples = torch.where(label == -1, torch.tensor(1, device=label.device),
+                                       torch.tensor(0, device=label.device)).sum().float()
+
+        # 计算 TAR, FAR, FRR, TRR
+        true_accept_rate = true_positives / positive_samples
+        false_accept_rate = false_positives / negative_samples
+        false_reject_rate = false_negatives / positive_samples
+        true_reject_rate = true_negatives / negative_samples
 
         # 将标签转换为 0 和 1
         label_binary = torch.where(label == 1, torch.tensor(1, device=label.device),

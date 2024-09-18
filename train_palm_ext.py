@@ -76,7 +76,7 @@ def train():
         raise ValueError("loss function is not supported!")
     # 1.3设置优化器
     optimizer = optim.Adam(net.parameters(), lr=config_toml['TRAIN']['lr'])
-    # 设置学习率下降策略,默认的也可以，那就不设置嘛，主要是不断去自动调整学习的那个速度
+    # adam自动调整学习速率
     # scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma= 0.5)
 
     # 2 开始进入训练步骤
