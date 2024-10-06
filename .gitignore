@@ -103,6 +103,6 @@ runs/train_vec/*/weights
 /data/train/*
 /data/valid/*
 
-/palm_roi_ext/hand_key_points/model/*
+#/palm_roi_ext/hand_key_points/model/*
 /palm_roi_ext/hand_segment/cv_resnet50_fast-instance-segmentation_coco/*
 /test/img/*

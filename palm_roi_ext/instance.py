@@ -104,33 +104,56 @@ class AutoRotateRoIExtract(ROIExtract,ShowImage):
         base_radius = abs(int(best_fitness))
         return center_point,base_radius
 
+    # def roi_extract_test(self, img):
+    #     x_up, y_up = img.shape[:2][::-1]
+    #     #1. 先进行关键点识别
+    #     key_points = self.key_points_instance.get_hand_key_point(img)
+    #     # 展示关键点识别出来的效果
+    #     self.key_points_instance.show_key_point(img, key_points)
+    #     #2. 图像旋转
+    #     img, angle,key_points = self.rotate_instance.rotate_angle_img(key_points,img)
+    #     self.rotate_instance.show_image("rotate", img)
+    #     #3. 手部分割
+    #     hand_segment = self.hand_segment.segment(img)
+    #     # 展示手部分割的效果
+    #     hand_only_image, hand_binary_image = self.hand_segment.keep_only_hand_in_image(img, hand_segment)
+    #     self.hand_segment.show_image("hand_extract", hand_only_image)
+    #     self.hand_segment.show_image("binary", hand_binary_image)
+    #     #4. 初始化圆心
+    #     center,base_radius = self.index_center_instance.get_init_center(key_points)
+    #     # 绘制初始化圆心
+    #     cent_imag = cv2.circle(hand_only_image, (int(center[0]), int(center[1])), 5, (255, 50, 60), -1)
+    #     self.show_image("init_center_point",cent_imag)
+    #
+    #     #5. PSO 算法优化圆心和半径
+    #     center,base_radius = self.__pso_optimize(center, hand_binary_image, x_up, y_up, base_radius)
+    #     #6. 提取ROI
+    #     draw_img,roi_square,roi_circle = self.extract_roi(hand_only_image, center, base_radius)
+    #     self.show_image("extract",draw_img)
+
+    # 取消展示
     def roi_extract_test(self, img):
         x_up, y_up = img.shape[:2][::-1]
-        #1. 先进行关键点识别
+        # 1. 先进行关键点识别
         key_points = self.key_points_instance.get_hand_key_point(img)
-        # 展示关键点识别出来的效果
-        self.key_points_instance.show_key_point(img, key_points)
-        #2. 图像旋转
-        img, angle,key_points = self.rotate_instance.rotate_angle_img(key_points,img)
-        self.rotate_instance.show_image("rotate", img)
-        #3. 手部分割
+        # 2. 图像旋转
+        img, angle, key_points = self.rotate_instance.rotate_angle_img(key_points, img)
+        # 3. 手部分割
         hand_segment = self.hand_segment.segment(img)
-        # 展示手部分割的效果
+        # 4. 提取手部区域
         hand_only_image, hand_binary_image = self.hand_segment.keep_only_hand_in_image(img, hand_segment)
-        self.hand_segment.show_image("hand_extract", hand_only_image)
-        self.hand_segment.show_image("binary", hand_binary_image)
-        #4. 初始化圆心
-        center,base_radius = self.index_center_instance.get_init_center(key_points)
-        # 绘制初始化圆心
-        cent_imag = cv2.circle(hand_only_image, (int(center[0]), int(center[1])), 5, (255, 50, 60), -1)
-        self.show_image("init_center_point",cent_imag)
 
-        #5. PSO 算法优化圆心和半径
-        center,base_radius = self.__pso_optimize(center, hand_binary_image, x_up, y_up, base_radius)
-        #6. 提取ROI
-        draw_img,roi_square,roi_circle = self.extract_roi(hand_only_image, center, base_radius)
-        self.show_image("extract",draw_img)
+        # 5. 初始化圆心
+        center, base_radius = self.index_center_instance.get_init_center(key_points)
 
+        # 6. PSO 算法优化圆心和半径
+        center, base_radius = self.__pso_optimize(center, hand_binary_image, x_up, y_up, base_radius)
+
+        # 7. 提取ROI
+        draw_img, roi_square, roi_circle = self.extract_roi(hand_only_image, center, base_radius)
+
+        # 保存结果
+        cv2.imwrite(r'D:\Yux\palm prints\datasets\tmp\roi_square.png', roi_square)
 
     def __check_key_points(self,key_points, width, height):
         for point in key_points:
@@ -157,6 +180,9 @@ class AutoRotateRoIExtract(ROIExtract,ShowImage):
         center, base_radius = self.__pso_optimize(center, hand_binary_image, x_up, y_up, base_radius)
         # 6. 提取ROI
         draw_img, roi_square, roi_circle = self.extract_roi(hand_only_image, center, base_radius)
+
+
+
         return draw_img,roi_square,roi_circle
 
 
@@ -180,6 +206,9 @@ class RotateRoIExtract(AutoRotateRoIExtract):
         center, base_radius = self.__pso_optimize(center, hand_binary_image, x_up, y_up, base_radius)
         # 6. 提取ROI
         draw_img, roi_square, roi_circle = self.extract_roi(hand_only_image, center, base_radius)
+
+
+
         return draw_img,roi_square,roi_circle
 
 
@@ -230,7 +259,7 @@ class FastRoIExtract(AutoRotateRoIExtract):
 
 if __name__ == '__main__':
 
-    img = cv2.imread(r"F:\projects\Gibs\palmprint_recognition\test\img\test01.jpg")
+    img = cv2.imread(r"D:\Yux\palm prints\datasets\BMPD\archive\Birjand University Mobile Palmprint Database (BMPD)\001\001_F_L_30.JPG")
     roi_extract = AutoRotateRoIExtract()
     # draw_img,roi_square,roi_circle = roi_extract.roi_extract(img)
     # roi_extract.show_image("extract",draw_img)
