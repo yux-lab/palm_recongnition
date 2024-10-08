@@ -119,6 +119,7 @@ class AutoRotateRoIExtract(ROIExtract, ShowImage):
 
                     except Exception as e:
                         print(f"Error processing {img_path}: {e}")
+                        continue
 
 
 # if __name__ == '__main__':
