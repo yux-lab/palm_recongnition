@@ -138,7 +138,6 @@ if __name__ == '__main__':
         (r'D:\Yux\palm prints\datasets\SMPD\archive\Sapienza University Mobile Palmprint Database(SMPD)', r'D:\Yux\palm prints\datasets\SMPD\archive\SMPD_ROI'),
         (r'D:\Yux\palm prints\datasets\CASIA\CASIA-Multi-Spectral-PalmprintV1\images', r'D:\Yux\palm prints\datasets\CASIA\CASIA-Multi-Spectral-PalmprintV1\images_ROI'),
         (r'D:\Yux\palm prints\datasets\CASIA\CASIA-PalmprintV1', r'D:\Yux\palm prints\datasets\CASIA\CASIA-PalmprintV1-ROI'),
-        (r'D:\Yux\palm prints\datasets\COEP\database', r'D:\Yux\palm prints\datasets\COEP\database_ROI')
     ]
 
     roi_extractor = AutoRotateRoIExtract()
