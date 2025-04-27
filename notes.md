@@ -15,4 +15,4 @@ pip install modelscope==1.15.0
 
 添加了： `palm_recongnition\palm_roi_ext\2ROI.py` 提取 ROI 区域并保存
 
-模型路径 `alm_roi_ext\hand_key_points\model` 
+模型路径 `palm_roi_ext\hand_key_points\model` 
